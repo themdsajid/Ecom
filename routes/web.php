@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -33,3 +34,15 @@ require __DIR__.'/auth.php';
 
 
 Route::get('index', [FrontendController::class, 'index'])->name('index');
+Route::get('desert', [FrontendController::class, 'desert'])->name('desert');
+Route::get('commcool', [FrontendController::class, 'commcool'])->name('commcool');
+Route::get('blog', [FrontendController::class, 'blog'])->name('blog');
+Route::get('video-gallery', [FrontendController::class, 'videoGallery'])->name('video-gallery');
+Route::get('contact-us', [FrontendController::class, 'contactUs'])->name('contact-us');
+Route::get('b2b/registration', [FrontendController::class, 'b2b_registration'])->name('b2b-registration');
+
+//---------------ADMIN---------------//
+
+Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('logo', [AdminController::class, 'logo'])->name('logo');
+Route::patch('logoUpdate/{id}', [AdminController::class,'logoUpdate'])->name('logoUpdate');

@@ -157,11 +157,11 @@
                                 style="position: fixed; background: rgb(255, 255, 255); top: 71px; padding-left: 10px;">
                                 <ul class="navbar-nav mx-auto text-md-center text-left">
                                     <li class="nav-item">
-                                        <a class="nav-link fs-16" href="category/desert.html"
-                                            style="color: #000;font-weight:600">Desert Coolers</a>
+                                        <a class="nav-link fs-16" href="{{ route('desert') }}" style="color: #000;font-weight:600">Desert Coolers</a>
+
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link fs-16" href="category/commercial.html"
+                                        <a class="nav-link fs-16" href="{{route('commcool')}}"
                                             style="color: #000;font-weight:600">Commercial Coolers</a>
                                     </li>
                                     <li class="nav-item">
@@ -170,19 +170,19 @@
                                             style="color: #000;font-weight:600">E-Catalogue</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link fs-16" href="blog.html"
+                                        <a class="nav-link fs-16" href="{{route('blog')}}"
                                             style="color: #000;font-weight:600">Our Blogs</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link fs-16" href="video-gallery.html"
+                                        <a class="nav-link fs-16" href="{{route('video-gallery')}}"
                                             style="color: #000;font-weight:600">Videos</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link fs-16" href="contact-us.html"
+                                        <a class="nav-link fs-16" href="{{route('contact-us')}}"
                                             style="color: #000;font-weight:600">Contact Us</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link fs-16" href="b2b/registration.html"
+                                        <a class="nav-link fs-16" href="{{route('b2b-registration')}}"
                                             style="color: #000;font-weight:600">B2B Registration</a>
                                     </li>
                                 </ul>
@@ -325,11 +325,11 @@
                             id="collapsingNavbar2">
                             <ul class="navbar-nav mx-auto text-md-center text-left">
                                 <li class="nav-item">
-                                    <a class="nav-link fs-16" href="category/desert.html"
+                                    <a class="nav-link fs-16" href="{{ route('desert') }}"
                                         style="color: #000;padding:0 1rem">Desert Coolers</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link fs-16" href="category/commercial.html"
+                                    <a class="nav-link fs-16" href="{{route('commcool')}}"
                                         style="color: #000;padding:0 1rem">Commercial Coolers</a>
                                 </li>
                                 <li class="nav-item">
@@ -338,19 +338,19 @@
                                         style="color: #000;padding:0 1rem">E-Catalogue</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link fs-16" href="blog.html" style="color: #000;padding:0 1rem">Our
+                                    <a class="nav-link fs-16" href="{{route('blog')}}" style="color: #000;padding:0 1rem">Our
                                         Blogs</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link fs-16" href="video-gallery.html"
+                                    <a class="nav-link fs-16" href="{{route('video-gallery')}}"
                                         style="color: #000;padding:0 1rem">Videos</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link fs-16" href="contact-us.html"
+                                    <a class="nav-link fs-16" href="{{route('contact-us')}}"
                                         style="color: #000;padding:0 1rem">Contact Us</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link fs-16" href="b2b/registration.html"
+                                    <a class="nav-link fs-16" href="{{route('b2b-registration')}}"
                                         style="color: #000;padding:0 1rem">B2B Registration</a>
                                 </li>
                             </ul>
@@ -3525,7 +3525,7 @@
                                     </a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="video-gallery.html" class="text-reset">
+                                    <a href="video-.html" class="text-reset">
                                         Video Gallery
                                     </a>
                                 </li>
