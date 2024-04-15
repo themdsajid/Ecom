@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,3 +47,9 @@ Route::get('b2b/registration', [FrontendController::class, 'b2b_registration'])-
 Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 Route::get('logo', [AdminController::class, 'logo'])->name('logo');
 Route::patch('logoUpdate/{id}', [AdminController::class,'logoUpdate'])->name('logoUpdate');
+
+Route::get('slider', [SliderController::class, 'index'])->name('slider');
+Route::get('slider-create', [SliderController::class, 'create'])->name('slider-create');
+Route::post('slider-store', [SliderController::class, 'store'])->name('slider-store');
+// Route::patch('slider.update/{id}', [SliderController::class, 'update'])->name('slider.update');
+Route::delete('slider-delete/{id}', [SliderController::class, 'destroy'])->name('slider.destroy');

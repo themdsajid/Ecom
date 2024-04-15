@@ -190,8 +190,10 @@
                         </nav>
                         <div class="col-auto col-xl-3 pl-0 pr-3 d-flex align-items-center">
                             <a class="d-block py-10px mr-3 ml-0" href="index.html">
-                                <img src="uploads/all/Phej0WBfbNGGoBrPK134UvBO95kO3GVBAREWaIN6.svg"
-                                    alt="NOVAMAX | AIR COOLERS" class="mw-100 h-30px h-md-60px" height="60">
+                                <img src="{{$addLogo->file}}"
+                                alt="NOVAMAX | AIR COOLERS" class="mw-100 h-30px h-md-60px" height="60">
+                                {{-- <img src="uploads/all/Phej0WBfbNGGoBrPK134UvBO95kO3GVBAREWaIN6.svg"
+                                    alt="NOVAMAX | AIR COOLERS" class="mw-100 h-30px h-md-60px" height="60"> --}}
                             </a>
                         </div>
                         <div class="d-lg-none ml-auto mr-0">
@@ -451,6 +453,27 @@
             <div class="position-relative">
                 <div class="aiz-carousel dots-inside-bottom mobile-img-auto-height" data-dots="true"
                     data-autoplay="true">
+
+                    @foreach ($sliders as $slider)
+                    <div class="carousel-box">
+                        <a href="category/desert.html">
+                            <img class="d-block mw-100 img-fit rounded shadow-sm overflow-hidden"
+                                src="{{$slider->file}}"
+                                alt="NOVAMAX | AIR COOLERS promo" height="auto"
+                                onerror="this.onerror=null;this.src='public/assets/img/placeholder-rect.jpg';"
+                                style="border-radius:0!important">
+                        </a>
+                    </div>
+                    @endforeach
+
+                </div>
+            </div>
+        </div>
+
+        {{-- <div class="home-banner-area d-none d-sm-block" style="width:100%!important;">
+            <div class="position-relative">
+                <div class="aiz-carousel dots-inside-bottom mobile-img-auto-height" data-dots="true"
+                    data-autoplay="true">
                     <div class="carousel-box">
                         <a href="category/desert.html">
                             <img class="d-block mw-100 img-fit rounded shadow-sm overflow-hidden"
@@ -498,7 +521,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="d-none d-sm-block"><img src="desktopstats.gif" class="w-100" /></div>
         <div class="d-sm-none"><img src="mobilestat.gif" class="w-100" /></div>
         <!-- Flash Deal -->

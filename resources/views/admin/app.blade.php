@@ -78,22 +78,22 @@ License: For each use you must have a valid license purchased only from above li
                         <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button"
                             aria-expanded="false" aria-controls="emails">
                             <i class="link-icon" data-feather="mail"></i>
-                            <span class="link-title">Add/Update Slider</span>
+                            <span class="link-title">Sliders</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
-                        {{-- <div class="collapse" id="emails">
+                        <div class="collapse" id="emails">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="pages/email/inbox.html" class="nav-link">Inbox</a>
+                                    <a href="{{route('slider-create')}}" class="nav-link">Add Slider</a>
                                 </li>
+                                {{-- <li class="nav-item">
+                                    <a href="{{route('slider.edit', $id)}}" class="nav-link">Update Slider</a>
+                                </li> --}}
                                 <li class="nav-item">
-                                    <a href="pages/email/read.html" class="nav-link">Read</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/email/compose.html" class="nav-link">Compose</a>
+                                    <a href="{{route('slider')}}" class="nav-link">View All Sliders</a>
                                 </li>
                             </ul>
-                        </div> --}}
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a href="pages/apps/chat.html" class="nav-link">

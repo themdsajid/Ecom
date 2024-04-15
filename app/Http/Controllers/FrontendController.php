@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Addlogo;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $sliders = Slider::all();
+        $addLogo = Addlogo::find(1);
+        return view('index', ['addLogo' => $addLogo, 'sliders' => $sliders]);
     }
 
     public function desert()

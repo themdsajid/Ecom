@@ -9,13 +9,11 @@
 
     <div class="card-body">
 
-        {{-- <h6 class="card-title"  >Basic Form</h6> --}}
-        <h6 class="card-title" style="margin-top: 100px; margin-left: 20px;">Logo Form</h6>
+        <h6 class="card-title" style="margin-top: 100px; margin-left: 20px;">Add Slider</h6>
 
         <form class="forms-sample" style="margin-top: 50px; margin-left: 20px;" method="post"
-            action="{{ route('logoUpdate', 1) }}" enctype="multipart/form-data">
+            action="{{ route('slider-store') }}" enctype="multipart/form-data">
             @csrf
-            @method('PATCH')
             <div class="mb-3">
                 <label for="exampleInputUsername1" class="form-label">Name</label>
                 <input type="text" class="form-control" id="exampleInputUsername1" name="name" autocomplete="off"
@@ -29,6 +27,8 @@
             <input type="submit" class="btn btn-primary me-2" value="Submit">
             {{-- <button class="btn btn-secondary">Cancel</button> --}}
         </form>
+
+
 
     </div>
 @endsection
