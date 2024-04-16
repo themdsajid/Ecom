@@ -95,11 +95,33 @@ License: For each use you must have a valid license purchased only from above li
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="pages/apps/chat.html" class="nav-link">
                             <i class="link-icon" data-feather="message-square"></i>
                             <span class="link-title">Add/Update Products</span>
                         </a>
+                    </li> --}}
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button"
+                            aria-expanded="false" aria-controls="emails">
+                            <i class="link-icon" data-feather="mail"></i>
+                            <span class="link-title">Menu Tag</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="emails">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    {{-- <a href="{{route('slider-create')}}" class="nav-link">Add Slider</a> --}}
+                                    <a href="{{route('add-menu')}}" class="nav-link">Add Menu</a>
+                                </li>
+                                {{-- <li class="nav-item">
+                                    <a href="{{route('slider.edit', $id)}}" class="nav-link">Update Slider</a>
+                                </li> --}}
+                                <li class="nav-item">
+                                    <a href="{{route('all-add-menu')}}" class="nav-link">View All Menu Tag</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a href="pages/apps/calendar.html" class="nav-link">

@@ -19,25 +19,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($sliders as $slider )
-                        <tr>
-                            <th>{{$loop->iteration}}</th>
-                            <th>{{$slider->id}}</th>
-                            <td>{{$slider->name}}</td>
-                            {{-- <td><a href="{{ asset($slider->file) }}">{{ $slider->file }}</a></td> --}}
-                            <td>
-                                <img src="{{ asset($slider->file) }}" alt="{{ $slider->name }}" style="max-width: 100px;">
-                            </td>
-                            <td>{{$slider->created_at}}</td>
-                            <td>{{$slider->updated_at}}</td>
-                            <td>
-                                <form action="{{ route('slider.destroy', $slider->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
+                        @foreach ($sliders as $slider)
+                            <tr>
+                                <th>{{ $loop->iteration }}</th>
+                                <th>{{ $slider->id }}</th>
+                                <td>{{ $slider->name }}</td>
+                                {{-- <td><a href="{{ asset($slider->file) }}">{{ $slider->file }}</a></td> --}}
+                                <td>
+                                    <img src="{{ asset($slider->file) }}" alt="{{ $slider->name }}" style="max-width: 100px;">
+                                </td>
+                                <td>{{ $slider->created_at }}</td>
+                                <td>{{ $slider->updated_at }}</td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="{{ route('slider-edit', $slider->id) }}"
+                                                class="btn btn-primary">Edit</a>
+
+                                        </div>
+                                        <div class="col">
+                                            <form action="{{ route('slider.destroy', $slider->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+
+                                </td>
+                            </tr>
                         @endforeach
 
 
