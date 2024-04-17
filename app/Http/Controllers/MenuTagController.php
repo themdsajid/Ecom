@@ -50,24 +50,33 @@ class MenuTagController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MenuTag $menuTag)
+    public function edit($id)
     {
-        //
+        $slug = MenuTag::find($id);
+        return view('admin.menu_tag.edit-menu', ['slug' => $slug]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, MenuTag $menuTag)
+    public function update(Request $request, $id)
     {
-        //
+        $slug = MenuTag::find($id);
+        $slug->page_name = $request->page_name;
+        $slug->slug = $request->slug;
+        $slug->save();
+
+        return redirect()->back()->with('success', 'Menu updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MenuTag $menuTag)
+    public function destroy($id)
     {
-        //
+        $slug = MenuTag::find($id);
+        $slug->delete();
+
+        return redirect()->back()->with('success', 'Menu Tag deleted successfully');
     }
 }

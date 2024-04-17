@@ -1,6 +1,12 @@
 @extends('admin.app')
 
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success mt-7" style="color: white;">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="card mt-7">
         <div class="card-body">
             <h6 class="card-title">Menu Tag Table</h6>
@@ -19,22 +25,32 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($slugs as $slug )
-                        <tr>
-                            <th>{{$loop->iteration}}</th>
-                            <th>{{$slug->id}}</th>
-                            <td>{{$slug->page_name}}</td>
-                            <td>{{$slug->slug}}</td>
-                            <td>{{$slug->created_at}}</td>
-                            <td>{{$slug->updated_at}}</td>
-                            {{-- <td>
-                                <form action="{{ route('', $slug->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </td> --}}
-                        </tr>
+                        @foreach ($slugs as $slug)
+                            <tr>
+                                <th>{{ $loop->iteration }}</th>
+                                <th>{{ $slug->id }}</th>
+                                <td>{{ $slug->page_name }}</td>
+                                <td>{{ $slug->slug }}</td>
+                                <td>{{ $slug->created_at }}</td>
+                                <td>{{ $slug->updated_at }}</td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="{{ route('edit-menu', $slug->id) }}"
+                                                class="btn btn-primary">Edit</a>
+
+                                        </div>
+                                        <div class="col">
+                                            <form action="{{ route('destroy-menu', $slug->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
                         @endforeach
 
 

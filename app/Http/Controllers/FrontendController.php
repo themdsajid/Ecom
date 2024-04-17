@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Addlogo;
+use App\Models\MenuTag;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -13,36 +14,60 @@ class FrontendController extends Controller
     {
         $sliders = Slider::all();
         $addLogo = Addlogo::find(1);
-        return view('index', ['addLogo' => $addLogo, 'sliders' => $sliders]);
+        $menuTags = MenuTag::all();
+        return view('index', ['addLogo' => $addLogo, 'sliders' => $sliders, 'menuTags' => $menuTags]);
     }
 
     public function desert()
     {
-        return view('category.desert');
+        $addLogo = Addlogo::find(1);
+        $menuTags = MenuTag::all();
+
+        return view('category.desert', ['addLogo' => $addLogo, 'menuTags' => $menuTags]);
     }
 
     public function commcool()
     {
-        return view('category.commcool');
+        $addLogo = Addlogo::find(1);
+        $menuTags = MenuTag::all();
+
+        return view('category.commcool', ['addLogo' => $addLogo, 'menuTags' => $menuTags]);
+        // return view('category.commcool');
     }
 
     public function blog()
     {
-        return view('blog');
+        $addLogo = Addlogo::find(1);
+        $menuTags = MenuTag::all();
+
+        return view('blog', ['addLogo' => $addLogo, 'menuTags' => $menuTags]);
+        // return view('blog');
     }
 
     public function videoGallery()
     {
-        return view('video-gallery');
+        $addLogo = Addlogo::find(1);
+        $menuTags = MenuTag::all();
+
+        return view('video-gallery', ['addLogo' => $addLogo, 'menuTags' => $menuTags]);
+        // return view('video-gallery');
     }
 
     public function contactUs()
     {
-        return view('contact-us');
+        $addLogo = Addlogo::find(1);
+        $menuTags = MenuTag::all();
+
+        return view('contact-us', ['addLogo' => $addLogo, 'menuTags' => $menuTags]);
+        // return view('contact-us');
     }
 
     public function b2b_registration()
     {
-        return view('b2b.registration');
+        $addLogo = Addlogo::find(1);
+        $menuTags = MenuTag::all();
+
+        return view('b2b.registration', ['addLogo' => $addLogo, 'menuTags' => $menuTags]);
+        // return view('b2b.registration');
     }
 }
