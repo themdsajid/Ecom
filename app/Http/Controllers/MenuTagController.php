@@ -64,6 +64,8 @@ class MenuTagController extends Controller
         $slug = MenuTag::find($id);
         $slug->page_name = $request->page_name;
         $slug->slug = $request->slug;
+        $slug->status = $request->status;
+        $slug->field_status = $request->field_status;
         $slug->save();
 
         return redirect()->back()->with('success', 'Menu updated successfully');

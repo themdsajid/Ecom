@@ -12,7 +12,21 @@
         {{-- <h6 class="card-title"  >Basic Form</h6> --}}
         <h6 class="card-title" style="margin-top: 100px; margin-left: 20px;">Logo Form</h6>
 
-        <form class="forms-sample" style="margin-top: 50px; margin-left: 20px;" method="post"
+        <form class="forms-sample" style="margin-top: 50px; margin-left: 20px;" method="POST" action="{{ route('logoUpdate', 1) }}" enctype="multipart/form-data">
+            @csrf
+            @method('PATCH')
+            <div class="mb-3">
+                <label for="exampleInputUsername1" class="form-label">Name</label>
+                <input type="text" class="form-control" id="exampleInputUsername1" name="name" autocomplete="off" placeholder="Name" required style="width: 600px;">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputFile1" class="form-label">Choose</label>
+                <input type="file" class="form-control" id="exampleInputFile1" name="file" accept="image/*" placeholder="file" style="width: 600px;">
+            </div>
+            <input type="submit" class="btn btn-primary me-2" value="Submit">
+        </form>
+
+        {{-- <form class="forms-sample" style="margin-top: 50px; margin-left: 20px;" method="post"
             action="{{ route('logoUpdate', 1) }}" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
@@ -28,7 +42,7 @@
             </div>
             <input type="submit" class="btn btn-primary me-2" value="Submit">
             {{-- <button class="btn btn-secondary">Cancel</button> --}}
-        </form>
+        {{-- </form> --}}
 
     </div>
 @endsection

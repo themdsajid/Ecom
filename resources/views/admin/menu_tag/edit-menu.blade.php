@@ -33,6 +33,34 @@
                 <input type="text" name="slug" class="form-control" id="slug" style="text-transform: lowercase; width: 600px;" required value="{{$slug->slug}}">
             </div>
 
+            <div class="mb-3">
+                <label for="status" class="form-label required">Status</label>
+                <select name="status" class="form-control" id="status" style="text-transform: lowercase; width: 600px;" required value="{{$slug->status}}">>
+                    <option value="0">0 - Header</option>
+                    <option value="1">1 - Footer</option>
+                  </select>
+
+
+                {{-- <input type="text" name="status" class="form-control" id="status" style="text-transform: lowercase; width: 600px;" required value="{{$slug->slug}}"> --}}
+
+
+            </div>
+
+
+            <div class="mb-3">
+                <label for="status" class="form-label required">Field Status</label>
+                <select name="field_status" class="form-control" id="feild_status" style="text-transform: lowercase; width: 600px;" required value="{{$slug->field_status}}">>
+                    <option value="0">0 - Active</option>
+                    <option value="1">1 - Inactive</option>
+                  </select>
+
+
+                {{-- <input type="text" name="status" class="form-control" id="status" style="text-transform: lowercase; width: 600px;" required value="{{$slug->slug}}"> --}}
+
+
+            </div>
+
+
             <button type="submit" class="btn btn-primary me-2">Update</button>
         </form>
     </div>

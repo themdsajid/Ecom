@@ -43,6 +43,7 @@ Route::get('blog', [FrontendController::class, 'blog'])->name('Our-Blog');
 Route::get('video-gallery', [FrontendController::class, 'videoGallery'])->name('Video-Gallery');
 Route::get('contact-us', [FrontendController::class, 'contactUs'])->name('Contact-Us');
 Route::get('b2b/registration', [FrontendController::class, 'b2b_registration'])->name('B2B-Registration');
+Route::get('test', [FrontendController::class, 'test'])->name('Test');
 
 //---------------ADMIN---------------//
 

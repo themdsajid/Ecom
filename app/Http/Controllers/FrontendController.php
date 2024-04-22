@@ -14,14 +14,14 @@ class FrontendController extends Controller
     {
         $sliders = Slider::all();
         $addLogo = Addlogo::find(1);
-        $menuTags = MenuTag::all();
+        $menuTags = MenuTag::where('field_status', 1)->get();
         return view('index', ['addLogo' => $addLogo, 'sliders' => $sliders, 'menuTags' => $menuTags]);
     }
 
     public function desert()
     {
         $addLogo = Addlogo::find(1);
-        $menuTags = MenuTag::all();
+        $menuTags = MenuTag::where('field_status', 1)->get();
 
         return view('category.desert', ['addLogo' => $addLogo, 'menuTags' => $menuTags]);
     }
@@ -29,7 +29,7 @@ class FrontendController extends Controller
     public function commcool()
     {
         $addLogo = Addlogo::find(1);
-        $menuTags = MenuTag::all();
+        $menuTags = MenuTag::where('field_status', 1)->get();
 
         return view('category.commcool', ['addLogo' => $addLogo, 'menuTags' => $menuTags]);
         // return view('category.commcool');
@@ -38,7 +38,7 @@ class FrontendController extends Controller
     public function blog()
     {
         $addLogo = Addlogo::find(1);
-        $menuTags = MenuTag::all();
+        $menuTags = MenuTag::where('field_status', 1)->get();
 
         return view('blog', ['addLogo' => $addLogo, 'menuTags' => $menuTags]);
         // return view('blog');
@@ -47,7 +47,7 @@ class FrontendController extends Controller
     public function videoGallery()
     {
         $addLogo = Addlogo::find(1);
-        $menuTags = MenuTag::all();
+        $menuTags = MenuTag::where('field_status', 1)->get();
 
         return view('video-gallery', ['addLogo' => $addLogo, 'menuTags' => $menuTags]);
         // return view('video-gallery');
@@ -56,7 +56,7 @@ class FrontendController extends Controller
     public function contactUs()
     {
         $addLogo = Addlogo::find(1);
-        $menuTags = MenuTag::all();
+        $menuTags = MenuTag::where('field_status', 1)->get();
 
         return view('contact-us', ['addLogo' => $addLogo, 'menuTags' => $menuTags]);
         // return view('contact-us');
@@ -65,7 +65,7 @@ class FrontendController extends Controller
     public function b2b_registration()
     {
         $addLogo = Addlogo::find(1);
-        $menuTags = MenuTag::all();
+        $menuTags = MenuTag::where('field_status', 1)->get();
 
         return view('b2b.registration', ['addLogo' => $addLogo, 'menuTags' => $menuTags]);
         // return view('b2b.registration');

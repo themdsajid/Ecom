@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('page_name');
             $table->string('slug');
             $table->enum('status', ['0', '1'])->default('0');
+            $table->enum('field_status', ['0', '1'])->default('0');
             $table->timestamps();
         });
     }

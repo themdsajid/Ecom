@@ -22,13 +22,15 @@ class AdminController extends Controller
 
     public function logoUpdate(LogoUpdateRequest $request, $id)
     {
+        // dd($request);
         // Find the logo by ID
         $addlogo = Addlogo::find($id);
 
+        // dd($addlogo);
         // Check if the logo exists
-        if (!$addlogo) {
-            return redirect()->back()->with('error', 'Logo not found.');
-        }
+        // if (!$addlogo) {
+        //     return redirect()->back()->with('error', 'Logo not found.');
+        // }
 
         // Handle file upload
         if ($request->hasFile('file')) {
@@ -37,22 +39,26 @@ class AdminController extends Controller
             $image->move(public_path('uploadsLogo'), $imageName); // Move the uploaded file to a public directory (e.g., 'uploadsLogo')
 
             // Delete old image if it exists
-            if ($addlogo->file) {
+            if ($addlogo && $addlogo->file) {
                 $filePath = public_path($addlogo->file); // Construct the correct file path
                 if (file_exists($filePath)) {
                     unlink($filePath); // Use unlink to delete the old image file
                 }
             }
 
-            // Update logo with new file path
-            $addlogo->file = 'uploadsLogo/' . $imageName;
+            // // Update logo with new file path
+            // $addlogo->file = 'uploadsLogo/' . $imageName;
         }
 
-        // Update logo name
-        $addlogo->name = $request->name;
+        // // Update logo name
+        // $addlogo->name = $request->name;
 
-        // Save the updated logo
-        $addlogo->save();
+        // // Save the updated logo
+        // $addlogo->save();
+        $logo = Addlogo::updateOrCreate(
+            ['id' => '1' ],
+            ['name' => $request->name, 'file' => 'uploadsLogo/' . $imageName]
+        );
 
         return redirect()->back()->with('success', 'Logo updated successfully.');
     }

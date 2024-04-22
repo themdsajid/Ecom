@@ -38,9 +38,9 @@
                     </div>
                 </nav>
                 <div class="col-auto col-xl-3 pl-0 pr-3 d-flex align-items-center">
-                    <a class="d-block py-10px mr-3 ml-0" href="index.html">
-                        <img src= {{asset($addLogo->file)}}   alt="NOVAMAX | AIR COOLERS"
-                            class="mw-100 h-30px h-md-60px" height="60">
+                    <a class="d-block py-10px mr-3 ml-0" href="{{ route('index') }}">
+                        <img src={{ asset($addLogo->file) }} alt="NOVAMAX | AIR COOLERS" class="mw-100 h-30px h-md-60px"
+                            height="60">
                         {{-- <img src="uploads/all/Phej0WBfbNGGoBrPK134UvBO95kO3GVBAREWaIN6.svg"
                             alt="NOVAMAX | AIR COOLERS" class="mw-100 h-30px h-md-60px" height="60"> --}}
                     </a>
@@ -54,11 +54,9 @@
 
                 <div class="flex-grow-1 front-header-search d-flex align-items-center bg-white">
                     <div class="position-relative flex-grow-1">
-                        <form action="https://www.novamaxindia.com/search" method="GET"
-                            class="stop-propagation">
+                        <form action="https://www.novamaxindia.com/search" method="GET" class="stop-propagation">
                             <div class="d-flex position-relative align-items-center">
-                                <div class="d-lg-none" data-toggle="class-toggle"
-                                    data-target=".front-header-search">
+                                <div class="d-lg-none" data-toggle="class-toggle" data-target=".front-header-search">
                                     <button class="btn px-2" type="button"><i
                                             class="la la-2x la-long-arrow-left"></i></button>
                                 </div>
@@ -165,8 +163,7 @@
     </div>
     <div class="bg-white border-top border-gray-200 py-1 d-none d-md-flex">
         <div class="container">
-            <nav
-                class="navbar navbar-light navbar-expand-md bg-white justify-content-md-center justify-content-start">
+            <nav class="navbar navbar-light navbar-expand-md bg-white justify-content-md-center justify-content-start">
                 <button class="navbar-toggler ml-1" type="button" data-toggle="collapse"
                     data-target="#collapsingNavbar2">
                     <span class="navbar-toggler-icon"></span>
@@ -174,7 +171,17 @@
                 <div class="navbar-collapse collapse justify-content-between align-items-center w-100"
                     id="collapsingNavbar2">
                     <ul class="navbar-nav mx-auto text-md-center text-left">
-                        <li class="nav-item">
+                        @foreach ($menuTags as $menuTag)
+                            <li class="nav-item">
+                                <a class="nav-link fs-16" href="{{ route($menuTag->slug) }}"
+                                    style="color: #000;padding: 0 1rem">
+                                    {{ $menuTag->page_name }}
+                                </a>
+                            </li>
+                        @endforeach
+
+
+                        {{-- <li class="nav-item">
                             <a class="nav-link fs-16" href="{{ route('Desert') }}"
                                 style="color: #000;padding:0 1rem">Desert Coolers</a>
                         </li>
@@ -182,11 +189,7 @@
                             <a class="nav-link fs-16" href="{{ route('Commercial-Coolers') }}"
                                 style="color: #000;padding:0 1rem">Commercial Coolers</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link fs-16"
-                                href="https://novamaxindia.com/public/uploads/all/7EgdhwXagGUOsn13OFdm7Ma9hzC4y7FXz7t691SQ.pdf"
-                                style="color: #000;padding:0 1rem">E-Catalogue</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link fs-16" href="{{ route('Our-Blog') }}"
                                 style="color: #000;padding:0 1rem">Our
@@ -203,6 +206,11 @@
                         <li class="nav-item">
                             <a class="nav-link fs-16" href="{{ route('B2B-Registration') }}"
                                 style="color: #000;padding:0 1rem">B2B Registration</a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link fs-16"
+                                href="https://novamaxindia.com/public/uploads/all/7EgdhwXagGUOsn13OFdm7Ma9hzC4y7FXz7t691SQ.pdf"
+                                style="color: #000;padding:0 1rem">E-Catalogue</a>
                         </li>
                     </ul>
                 </div>

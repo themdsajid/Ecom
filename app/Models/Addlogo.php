@@ -9,9 +9,11 @@ class Addlogo extends Model
 {
     use HasFactory;
 
-    // protected $fillable = [
-    //     'name',
-    // ];
+    protected $fillable = [
+        'id',
+        'name',
+        'file',
+    ];
 
-    protected $gaurded = [];
+    // protected $gaurded = [];
 }
