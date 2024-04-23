@@ -129,6 +129,60 @@ License: For each use you must have a valid license purchased only from above li
                             <span class="link-title">Calendar</span>
                         </a>
                     </li>
+
+
+                    <li class="nav-item nav-category">Category and Products</li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button"
+                            aria-expanded="false" aria-controls="emails">
+                            <i class="link-icon" data-feather="mail"></i>
+                            <span class="link-title">Category</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="emails">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="{{route('add-category')}}" class="nav-link">Add Category</a>
+                                </li>
+                                {{-- <li class="nav-item">
+                                    <a href="{{route('slider.edit', $id)}}" class="nav-link">Update Slider</a>
+                                </li> --}}
+                                <li class="nav-item">
+                                    <a href="{{route('all-categories')}}" class="nav-link">View All Category</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    {{-- <li class="nav-item">
+                        <a href="pages/apps/chat.html" class="nav-link">
+                            <i class="link-icon" data-feather="message-square"></i>
+                            <span class="link-title">Add/Update Products</span>
+                        </a>
+                    </li> --}}
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button"
+                            aria-expanded="false" aria-controls="emails">
+                            <i class="link-icon" data-feather="mail"></i>
+                            <span class="link-title">Product</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="emails">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    {{-- <a href="{{route('slider-create')}}" class="nav-link">Add Slider</a> --}}
+                                    <a href="{{route('add-menu')}}" class="nav-link">Add Product</a>
+                                </li>
+                                {{-- <li class="nav-item">
+                                    <a href="{{route('slider.edit', $id)}}" class="nav-link">Update Slider</a>
+                                </li> --}}
+                                <li class="nav-item">
+                                    <a href="{{route('all-add-menu')}}" class="nav-link">View All Products</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+
                     <li class="nav-item nav-category">Components</li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button"

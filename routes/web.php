@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\MenuTagController;
 use App\Http\Controllers\ProfileController;
@@ -64,4 +65,11 @@ Route::get('all-add-menu', [MenuTagController::class, 'index'])->name('all-add-m
 Route::get('edit-menu/{id}', [MenuTagController::class, 'edit'])->name('edit-menu');
 Route::patch('update-menu/{id}', [MenuTagController::class, 'update'])->name('update-menu');
 Route::delete('delete-menu/{id}', [MenuTagController::class, 'destroy'])->name('destroy-menu');
+
+Route::get('add-category', [CategoryController::class, 'create'])->name('add-category');
+Route::post('category-store', [CategoryController::class, 'store'])->name('category-store');
+Route::get('all-categories', [CategoryController::class, 'index'])->name('all-categories');
+Route::get('edit-category/{id}', [CategoryController::class, 'edit'])->name('edit-category');
+Route::patch('category-update/{id}', [CategoryController::class, 'update'])->name('category-update');
+Route::delete('destroy-category/{id}', [CategoryController::class, 'destroy'])->name('destroy-category');
 
