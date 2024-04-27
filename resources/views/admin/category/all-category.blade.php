@@ -32,9 +32,9 @@
                                 <td>{{ $category->name }}</td>
                                 <td>
                                     @if ($category->status == 0)
-                                        {{ 'Inactive' }}
+                                        {{$category->status.'-Inactive' }}
                                     @elseif ($category->status == 1)
-                                        {{ 'Active' }}
+                                        {{$category->status.'-Active' }}
                                     @endif
                                 </td>
                                 <td>{{ $category->created_at }}</td>

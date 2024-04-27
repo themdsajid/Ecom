@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\MenuTagController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SliderController;
 use App\Models\MenuTag;
@@ -72,4 +73,11 @@ Route::get('all-categories', [CategoryController::class, 'index'])->name('all-ca
 Route::get('edit-category/{id}', [CategoryController::class, 'edit'])->name('edit-category');
 Route::patch('category-update/{id}', [CategoryController::class, 'update'])->name('category-update');
 Route::delete('destroy-category/{id}', [CategoryController::class, 'destroy'])->name('destroy-category');
+
+Route::get('all-product', [ProductController::class, 'index'])->name('all-products');
+Route::get('add-product', [ProductController::class, 'create'])->name('add-product');
+Route::post('store-product', [ProductController::class, 'store'])->name('store-product');
+Route::get('show-product/{id}', [ProductController::class, 'show'])->name('show-product');
+Route::patch('edit-product/{id}', [ProductController::class, 'edit'])->name('edit-product');
+Route::delete('delete-product/{id}', [ProductController::class, 'destroy'])->name('destroy-product');
 

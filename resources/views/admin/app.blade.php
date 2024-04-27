@@ -170,13 +170,13 @@ License: For each use you must have a valid license purchased only from above li
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
                                     {{-- <a href="{{route('slider-create')}}" class="nav-link">Add Slider</a> --}}
-                                    <a href="{{route('add-menu')}}" class="nav-link">Add Product</a>
+                                    <a href="{{route('add-product')}}" class="nav-link">Add Product</a>
                                 </li>
                                 {{-- <li class="nav-item">
                                     <a href="{{route('slider.edit', $id)}}" class="nav-link">Update Slider</a>
                                 </li> --}}
                                 <li class="nav-item">
-                                    <a href="{{route('all-add-menu')}}" class="nav-link">View All Products</a>
+                                    <a href="{{route('all-products')}}" class="nav-link">View All Products</a>
                                 </li>
                             </ul>
                         </div>
