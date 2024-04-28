@@ -1,6 +1,16 @@
 @extends('admin.app')
 
 @section('content')
+    <script>
+        function CopyData(val) {
+            var a = document.getElementById(val.id).value;
+            var inputs = document.querySelectorAll("#slug");
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].value = a.replace(/\s+/g, "-").replace(/\//g, "-");
+            }
+        }
+    </script>
+
     @if (session('success'))
         <div class="alert alert-success mt-7" style="color: white;">
             {{ session('success') }}
@@ -36,8 +46,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="exampleInputFile1" class="form-label">Choose</label>
-                                <input type="file" class="form-control" id="exampleInputFile1" name="images[]"
-                                    multiple accept="image/*" placeholder="file" style="width: 600px;">
+                                <input type="file" class="form-control" id="exampleInputFile1" name="images[]" multiple
+                                    accept="image/*" placeholder="file" style="width: 600px;">
                                 <small id="fileHelp" class="form-text text-muted">Maximum 4 images allowed.</small>
                             </div>
                             <script>
@@ -50,6 +60,22 @@
                                 });
                             </script>
                         </div>
+
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="page_name" class="form-label required">Name</label>
+                                <input type="text" name="name" class="form-control" id="name"
+                                    onkeyup="CopyData(this)" required style="width: 600px;">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="slug" class="form-label required">Slug</label>
+                                <input type="text" name="slug" class="form-control" id="slug"
+                                    style="text-transform: lowercase; width: 600px;" required>
+                            </div>
+                        </div>
+
+
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="exampleInputUsername1" class="form-label">Description</label>
@@ -70,9 +96,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="exampleInputUsername1" class="form-label">Description-2</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1"
-                                    name="description2" autocomplete="off" placeholder="Description-2" required
-                                    style="width: 600px;">
+                                <input type="text" class="form-control" id="exampleInputUsername1" name="description2"
+                                    autocomplete="off" placeholder="Description-2" required style="width: 600px;">
                             </div>
                         </div>
                         <div class="row mb-3">

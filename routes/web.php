@@ -78,6 +78,7 @@ Route::get('all-product', [ProductController::class, 'index'])->name('all-produc
 Route::get('add-product', [ProductController::class, 'create'])->name('add-product');
 Route::post('store-product', [ProductController::class, 'store'])->name('store-product');
 Route::get('show-product/{id}', [ProductController::class, 'show'])->name('show-product');
-Route::patch('edit-product/{id}', [ProductController::class, 'edit'])->name('edit-product');
+Route::get('edit-product/{id}', [ProductController::class, 'edit'])->name('edit-product');
+Route::patch('update-product/{id}', [ProductController::class, 'update'])->name('update-product');
 Route::delete('delete-product/{id}', [ProductController::class, 'destroy'])->name('destroy-product');
 

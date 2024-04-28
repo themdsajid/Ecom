@@ -12,6 +12,8 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Name</th>
+                            <th>Slug</th>
                             <th>Description</th>
                             <th>Category</th>
                             <th>Price</th>
@@ -25,6 +27,8 @@
                         @foreach ($products as $product)
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->slug }}</td>
                                 <td>{{ $product->description }}</td>
                                 {{-- <td><a href="{{ asset($slider->file) }}">{{ $slider->file }}</a></td> --}}
                                 {{-- <td>

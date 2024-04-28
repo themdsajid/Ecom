@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProductStoreRequest extends FormRequest
+class ProductUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,17 +23,17 @@ class ProductStoreRequest extends FormRequest
     {
         return [
             'category_id' => 'required|exists:categories,id',
-            'name' => 'required',
-            'slug' => 'required',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Assuming 2MB as max file size for each image
-            'description' => 'required',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the validation rules for images as needed
+            'name' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
+            'description' => 'required|string',
             'price' => 'required|numeric',
             'discount' => 'required|numeric',
-            'description2' => 'required',
-            'review' => 'required',
-            'today_offer' => 'required',
-            'super_deal' => 'required',
-            'offers' => 'required',
+            'description2' => 'required|string',
+            'review' => 'required|string',
+            'today_offer' => 'required|string',
+            'super_deal' => 'required|string',
+            'offers' => 'required|string',
             'status' => 'required|in:0,1',
         ];
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductStoreRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::where('status', '1')->get();
+        // $products = Product::where('status', '1')->get();
+        $products = Product::all();
         return view('admin.product.index', ['products' => $products]);
     }
 
@@ -45,6 +47,8 @@ class ProductController extends Controller
         // Store product data in the database
         $product = Product::create([
             'category_id' => $request->category_id,
+            'name' => $request->name,
+            'slug' => $request->slug,
             'description' => $request->description,
             'price' => $request->price,
             'discount' => $request->discount,
@@ -55,6 +59,7 @@ class ProductController extends Controller
             'offers' => $request->offers,
             'status' => $request->status,
         ]);
+
 
         // Handle image uploads
         if ($request->hasFile('images')) {
@@ -84,17 +89,64 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $categories = Category::where('status', '1')->get();
+        $product = Product::find($id);
+        return view('admin.product.edit', ['product' => $product, 'categories' => $categories]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductUpdateRequest $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        // Update product attributes directly from the validated request
+        $product->category_id = $request->category_id;
+        $product->name = $request->name;
+        $product->slug = $request->slug;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->discount = $request->discount;
+        $product->description2 = $request->description2;
+        $product->review = $request->review;
+        $product->today_offer = $request->today_offer;
+        $product->super_deal = $request->super_deal;
+        $product->offers = $request->offers;
+        $product->status = $request->status;
+
+        // Save the updated product
+        $product->save();
+
+        // Handle image uploads if any
+        if ($request->hasFile('images')) {
+
+            $json_images = json_decode($product->images);
+
+            foreach ($json_images as $json_image) {
+                $filepath = public_path('/myProduct/' . $json_image);
+                unlink($filepath);
+            }
+            // dd('hello');
+            // $images = $request->file('images');
+            // dd($images);
+            $images = [];
+
+            foreach ($request->file('images') as $image) {
+                $imageName = time() . '_' . $image->getClientOriginalName();
+                $image->move(public_path('myProduct'), $imageName);
+                $images[] = $imageName;
+            }
+            // dd($images);
+            // Update the product's image paths in the database
+            $product->images = json_encode($images);
+            $product->save();
+        }
+
+        // Redirect back with success message or to a specific route
+        return redirect()->back()->with('success', 'Product updated successfully.');
     }
 
     /**
@@ -106,7 +158,7 @@ class ProductController extends Controller
         // dd($product->images);
         $json_images = json_decode($product->images);
 
-        foreach($json_images as $json_image) {
+        foreach ($json_images as $json_image) {
             $filepath = public_path('/myProduct/' . $json_image);
             unlink($filepath);
         }
