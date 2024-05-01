@@ -223,7 +223,7 @@
                             <div class="col-md-6">
                                 <label for="exampleInputFile1" class="form-label">Choose</label>
                                 <input type="file" class="form-control" id="exampleInputFile1" name="images[]" multiple accept="image/*" placeholder="file" style="width: 600px;">
-                                <small id="fileHelp" class="form-text text-muted">Maximum 4 images allowed.</small>
+                                <small id="fileHelp" class="form-text text-muted">Maximum 4 images allowed. While updating previous images will be deleted.</small>
                             </div>
                             <script>
                                 document.getElementById('exampleInputFile1').addEventListener('change', function() {

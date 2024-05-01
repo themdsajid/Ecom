@@ -8,6 +8,7 @@ use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class ProductController extends Controller
 {
@@ -82,7 +83,23 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
+        // $product = Product::find($id);
+
+        // Decrypt the ID
+        try {
+            $decryptedId = Crypt::decrypt($id);
+        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+            abort(404); // Handle decryption failure (e.g., invalid payload)
+        }
+
+        // Use the decrypted ID to find and display the product
+        $product = Product::find($decryptedId);
+
+        // Handle cases where the product is not found
+        if (!$product) {
+            abort(404); // Or your custom logic
+        }
+
         return view('admin.product.show', ['product' => $product]);
     }
 
@@ -92,7 +109,22 @@ class ProductController extends Controller
     public function edit($id)
     {
         $categories = Category::where('status', '1')->get();
-        $product = Product::find($id);
+
+        // Decrypt the ID
+        try {
+            $decryptedId = Crypt::decrypt($id);
+        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+            abort(404); // Handle decryption failure (e.g., invalid payload)
+        }
+
+        // Use the decrypted ID to find and display the product
+        $product = Product::find($decryptedId);
+
+        // Handle cases where the product is not found
+        if (!$product) {
+            abort(404); // Or your custom logic
+        }
+
         return view('admin.product.edit', ['product' => $product, 'categories' => $categories]);
     }
 
@@ -123,12 +155,15 @@ class ProductController extends Controller
         // Handle image uploads if any
         if ($request->hasFile('images')) {
 
-            $json_images = json_decode($product->images);
+            if($product->images){
+                $json_images = json_decode($product->images);
 
             foreach ($json_images as $json_image) {
-                $filepath = public_path('/myProduct/' . $json_image);
+                $filepath = public_path('myProduct/' . $json_image);
                 unlink($filepath);
             }
+            }
+
             // dd('hello');
             // $images = $request->file('images');
             // dd($images);
@@ -154,14 +189,34 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
-        // dd($product->images);
-        $json_images = json_decode($product->images);
+        // dd('hello');
+        // $product = Product::find($id);
 
-        foreach ($json_images as $json_image) {
-            $filepath = public_path('/myProduct/' . $json_image);
-            unlink($filepath);
+        // Decrypt the ID
+        try {
+            $decryptedId = Crypt::decrypt($id);
+        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+            abort(404); // Handle decryption failure (e.g., invalid payload)
         }
+
+        // Use the decrypted ID to find and display the product
+        $product = Product::find($decryptedId);
+
+        // Handle cases where the product is not found
+        if (!$product) {
+            abort(404); // Or your custom logic
+        }
+
+        // dd($product->images);
+        if ($product->images) {
+            $json_images = json_decode($product->images);
+
+            foreach ($json_images as $json_image) {
+                $filepath = public_path('/myProduct/' . $json_image);
+                unlink($filepath);
+            }
+        }
+
 
         $product->delete();
 

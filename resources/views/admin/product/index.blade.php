@@ -48,19 +48,19 @@
                                 <td>
                                     <div class="row">
                                         <div class="col">
-                                            <a href="{{ route('show-product', $product->id) }}" class="btn btn-info">Show</a>
+                                            <a href="{{ route('show-product', ['id' => Crypt::encrypt($product->id)]) }}" class="btn btn-info">Show</a>
 
                                         </div>
                                         <div class="col">
-                                            <a href="{{ route('edit-product', $product->id) }}"
+                                            <a href="{{ route('edit-product', ['id' => Crypt::encrypt($product->id)]) }}"
                                                 class="btn btn-primary">Edit</a>
 
                                         </div>
                                         <div class="col">
-                                            <form action="{{ route('destroy-product', $product->id) }}" method="POST">
+                                            <form action="{{ route('destroy-product', ['id' => Crypt::encrypt($product->id)]) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <button type="submit" class="btn btn-danger  delete-data">Delete</button>
                                             </form>
                                         </div>
                                     </div>
@@ -76,4 +76,28 @@
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css" rel="stylesheet">
+    <script type="text/javascript">
+        $("body").on("click"," .delete-data", function(){
+            var current_object = $(this);
+            swal.fire({
+                title: "Are you sure?",
+                text: "We are going to delete this user forever.",
+                type: "error",
+                showCancelButton: true,
+                dangerMode: true,
+                cancelButtonClass: 'red',
+                confirmButtonColor: 'blue',
+                confirmButtonText: 'Delete',
+            },function (result) {
+                if (result) {
+                    var action = current_object.attr('data-action');
+                    var token = jQuery('meta[name="csrf-token"]').attr('content');
+                    var id = current_object.attr('data-id');
+                }
+            });
+        });
+    </script>
 @endsection
