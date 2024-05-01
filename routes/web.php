@@ -70,7 +70,7 @@ Route::delete('delete-menu/{id}', [MenuTagController::class, 'destroy'])->name('
 Route::get('add-category', [CategoryController::class, 'create'])->name('add-category');
 Route::post('category-store', [CategoryController::class, 'store'])->name('category-store');
 Route::get('all-categories', [CategoryController::class, 'index'])->name('all-categories');
-Route::get('edit-category/{id}', [CategoryController::class, 'edit'])->name('edit-category');
+Route::get('edit-category/{id}', [CategoryController::class, 'edit'])->name('edit-category');//Using Same form editing used by create method
 Route::patch('category-update/{id}', [CategoryController::class, 'update'])->name('category-update');
 Route::delete('destroy-category/{id}', [CategoryController::class, 'destroy'])->name('destroy-category');
 
@@ -81,4 +81,5 @@ Route::get('show-product/{id}', [ProductController::class, 'show'])->name('show-
 Route::get('edit-product/{id}', [ProductController::class, 'edit'])->name('edit-product');
 Route::patch('update-product/{id}', [ProductController::class, 'update'])->name('update-product');
 Route::delete('delete-product/{id}', [ProductController::class, 'destroy'])->name('destroy-product');
+Route::get('/export-products', [ProductController::class, 'exportProducts'])->name('export.products');
 

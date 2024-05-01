@@ -11,6 +11,10 @@
         <div class="card-body">
             <h6 class="card-title">Categories Table</h6>
             {{-- <p class="text-muted mb-3">Add class <code>.table</code></p> --}}
+            <a href="{{ isset($category) ? route('edit-category', $category->id) : route('add-category') }}"
+                class="btn btn-primary mb-2">
+                Create
+            </a>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -41,10 +45,16 @@
                                 <td>{{ $category->updated_at }}</td>
                                 <td>
                                     <div class="row">
-                                        <div class="col">
+                                        {{-- <div class="col">
                                             <a href="{{ route('edit-category', $category->id) }}"
                                                 class="btn btn-primary mb-2">Edit</a>
 
+                                        </div> --}}
+                                        <div class="col">
+                                            <a href="{{ isset($category) ? route('edit-category', $category->id) : route('add-category') }}"
+                                                class="btn btn-primary mb-2">
+                                                Edit
+                                            </a>
                                         </div>
                                         <div class="col">
                                             <form action="{{ route('destroy-category', $category->id) }}" method="POST">

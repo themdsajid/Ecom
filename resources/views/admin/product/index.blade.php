@@ -5,6 +5,7 @@
         <div class="card-body">
             <h6 class="card-title">Data Table</h6>
             <a href="{{ route('add-product') }}" class="btn btn-primary">Add Product</a>
+            <a href="{{ route('export.products') }}" class="btn btn-primary">Export Excel</a>
 
             {{-- <p class="text-muted mb-3">Add class <code>.table</code></p> --}}
             <div class="table-responsive">

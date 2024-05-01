@@ -9,6 +9,8 @@ use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ProductController extends Controller
 {
@@ -155,13 +157,13 @@ class ProductController extends Controller
         // Handle image uploads if any
         if ($request->hasFile('images')) {
 
-            if($product->images){
+            if ($product->images) {
                 $json_images = json_decode($product->images);
 
-            foreach ($json_images as $json_image) {
-                $filepath = public_path('myProduct/' . $json_image);
-                unlink($filepath);
-            }
+                foreach ($json_images as $json_image) {
+                    $filepath = public_path('myProduct/' . $json_image);
+                    unlink($filepath);
+                }
             }
 
             // dd('hello');
@@ -221,5 +223,63 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->back()->with('success', 'Product deleted successfully');
+    }
+
+    public function exportProducts()
+    {
+        // Fetch data from the database (e.g., users table)
+        $products = Product::all();
+
+        // Create a new Spreadsheet object
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Set headers
+        $sheet->setCellValue('A1', 'ID');
+        $sheet->setCellValue('B1', 'Category_ID');
+        $sheet->setCellValue('C1', 'Name');
+        $sheet->setCellValue('D1', 'Slug');
+        $sheet->setCellValue('E1', 'Images');
+        $sheet->setCellValue('F1', 'Description');
+        $sheet->setCellValue('G1', 'Price');
+        $sheet->setCellValue('H1', 'Discount');
+        $sheet->setCellValue('I1', 'Description2');
+        $sheet->setCellValue('J1', 'Review');
+        $sheet->setCellValue('K1', 'Today_offer');
+        $sheet->setCellValue('L1', 'Super_Deal');
+        $sheet->setCellValue('M1', 'Offers');
+        $sheet->setCellValue('N1', 'Status');
+        $sheet->setCellValue('O1', 'Created_AT');
+
+        // Set data rows
+        $row = 2;
+        foreach ($products as $product) {
+            $sheet->setCellValue('A' . $row, $product->id);
+            $sheet->setCellValue('B' . $row, $product->category_id);
+            $sheet->setCellValue('C' . $row, $product->name);
+            $sheet->setCellValue('D' . $row, $product->slug);
+            $sheet->setCellValue('E' . $row, $product->images);
+            $sheet->setCellValue('F' . $row, $product->description);
+            $sheet->setCellValue('G' . $row, $product->price);
+            $sheet->setCellValue('H' . $row, $product->discount);
+            $sheet->setCellValue('I' . $row, $product->description2);
+            $sheet->setCellValue('J' . $row, $product->review);
+            $sheet->setCellValue('K' . $row, $product->today_offer);
+            $sheet->setCellValue('L' . $row, $product->super_deal);
+            $sheet->setCellValue('M' . $row, $product->offers);
+            $sheet->setCellValue('N' . $row, $product->status);
+            $sheet->setCellValue('O' . $row, $product->created_at);
+            $row++;
+        }
+
+        // Create a writer object
+        $writer = new Xlsx($spreadsheet);
+
+        // Set the headers for Excel file download
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment; filename="products.xlsx"');
+
+        // Write the spreadsheet data to the response
+        $writer->save('php://output');
     }
 }
