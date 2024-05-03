@@ -30,23 +30,23 @@ License: For each use you must have a valid license purchased only from above li
     <!-- End fonts -->
 
     <!-- core:css -->
-    <link rel="stylesheet" href="{{asset('adminassets/vendors/core/core.css')}}">
+    <link rel="stylesheet" href="{{ asset('adminassets/vendors/core/core.css') }}">
     <!-- endinject -->
 
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="{{asset('adminassets/vendors/flatpickr/flatpickr.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('adminassets/vendors/flatpickr/flatpickr.min.css') }}">
     <!-- End plugin css for this page -->
 
     <!-- inject:css -->
-    <link rel="stylesheet" href="{{asset('adminassets/fonts/feather-font/css/iconfont.css')}}">
-    <link rel="stylesheet" href="{{asset('adminassets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('adminassets/fonts/feather-font/css/iconfont.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminassets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <!-- endinject -->
 
     <!-- Layout styles -->
-    <link rel="stylesheet" href="{{asset('adminassets/css/demo2/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('adminassets/css/demo2/style.css') }}">
     <!-- End layout styles -->
 
-    <link rel="shortcut icon" href="{{asset('adminassets/images/favicon.png')}}" />
+    <link rel="shortcut icon" href="{{ asset('adminassets/images/favicon.png') }}" />
 </head>
 
 <body>
@@ -68,7 +68,7 @@ License: For each use you must have a valid license purchased only from above li
                 <ul class="nav">
                     <li class="nav-item nav-category">Main</li>
                     <li class="nav-item">
-                        <a href="{{route('logo')}}" class="nav-link">
+                        <a href="{{ route('logo') }}" class="nav-link">
                             <i class="link-icon" data-feather="box"></i>
                             <span class="link-title">Add/Update Logo</span>
                         </a>
@@ -84,13 +84,13 @@ License: For each use you must have a valid license purchased only from above li
                         <div class="collapse" id="emails">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="{{route('slider-create')}}" class="nav-link">Add Slider</a>
+                                    <a href="{{ route('slider-create') }}" class="nav-link">Add Slider</a>
                                 </li>
                                 {{-- <li class="nav-item">
                                     <a href="{{route('slider.edit', $id)}}" class="nav-link">Update Slider</a>
                                 </li> --}}
                                 <li class="nav-item">
-                                    <a href="{{route('slider')}}" class="nav-link">View All Sliders</a>
+                                    <a href="{{ route('slider') }}" class="nav-link">View All Sliders</a>
                                 </li>
                             </ul>
                         </div>
@@ -112,13 +112,13 @@ License: For each use you must have a valid license purchased only from above li
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
                                     {{-- <a href="{{route('slider-create')}}" class="nav-link">Add Slider</a> --}}
-                                    <a href="{{route('add-menu')}}" class="nav-link">Add Menu</a>
+                                    <a href="{{ route('add-menu') }}" class="nav-link">Add Menu</a>
                                 </li>
                                 {{-- <li class="nav-item">
                                     <a href="{{route('slider.edit', $id)}}" class="nav-link">Update Slider</a>
                                 </li> --}}
                                 <li class="nav-item">
-                                    <a href="{{route('all-add-menu')}}" class="nav-link">View All Menu Tag</a>
+                                    <a href="{{ route('all-add-menu') }}" class="nav-link">View All Menu Tag</a>
                                 </li>
                             </ul>
                         </div>
@@ -142,13 +142,13 @@ License: For each use you must have a valid license purchased only from above li
                         <div class="collapse" id="emails">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
-                                    <a href="{{route('add-category')}}" class="nav-link">Add Category</a>
+                                    <a href="{{ route('add-category') }}" class="nav-link">Add Category</a>
                                 </li>
                                 {{-- <li class="nav-item">
                                     <a href="{{route('slider.edit', $id)}}" class="nav-link">Update Slider</a>
                                 </li> --}}
                                 <li class="nav-item">
-                                    <a href="{{route('all-categories')}}" class="nav-link">View All Category</a>
+                                    <a href="{{ route('all-categories') }}" class="nav-link">View All Category</a>
                                 </li>
                             </ul>
                         </div>
@@ -170,16 +170,26 @@ License: For each use you must have a valid license purchased only from above li
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
                                     {{-- <a href="{{route('slider-create')}}" class="nav-link">Add Slider</a> --}}
-                                    <a href="{{route('add-product')}}" class="nav-link">Add Product</a>
+                                    <a href="{{ route('add-product') }}" class="nav-link">Add Product</a>
                                 </li>
                                 {{-- <li class="nav-item">
                                     <a href="{{route('slider.edit', $id)}}" class="nav-link">Update Slider</a>
                                 </li> --}}
                                 <li class="nav-item">
-                                    <a href="{{route('all-products')}}" class="nav-link">View All Products</a>
+                                    <a href="{{ route('all-products') }}" class="nav-link">View All Products</a>
                                 </li>
                             </ul>
                         </div>
+                    </li>
+
+                    {{-- // --}}
+                    <li class="nav-item nav-category">Users</li>
+                    <li class="nav-item">
+                        <ul class="nav sub-menu">
+                            <li class="nav-item">
+                                <a href="#" class="link-title">View All Users</a>
+                            </li>
+                        </ul>
                     </li>
 
 
@@ -765,7 +775,7 @@ License: For each use you must have a valid license purchased only from above li
             </nav>
             <!-- partial -->
 
-           @yield('content')
+            @yield('content')
 
             <!-- partial:partials/_footer.html -->
             <footer
@@ -802,4 +812,3 @@ License: For each use you must have a valid license purchased only from above li
 </body>
 
 </html>
-

@@ -17,11 +17,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('address')->nullable();
-            $table->string('image')->nullable();
-            $table->string('role')->nullable();
+            $table->string('permission')->nullable();
+            $table->string('profile_image')->nullable();
+            $table->string('role')->nullable(); //User=>1,Vendor=>2,Admin=>3
             $table->string('status')->nullable();
-            $table->string('ip_address')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
