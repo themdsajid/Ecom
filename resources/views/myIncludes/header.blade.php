@@ -152,8 +152,8 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-xs p-0 stop-propagation">
                             <div class="px-3 py-3 fs-15 border-top d-flex justify-content-between">
-                                <span class="fw-600"><a href="users/login.html">Login</a></span>
-                                <span class="fw-600"><a href="users/registration.html">Register</a></span>
+                                <span class="fw-600"><a href="{{route('myUser-login')}}">Login</a></span>
+                                <span class="fw-600"><a href="{{route('myUser-registration')}}">Register</a></span>
                             </div>
                         </div>
                     </div>

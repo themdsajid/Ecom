@@ -7,11 +7,13 @@ use App\Models\Addlogo;
 use App\Models\MenuTag;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
     public function index()
     {
+        // dd(Auth::user()->id);
         $sliders = Slider::all();
         $addLogo = Addlogo::find(1);
         $menuTags = MenuTag::where('field_status', 1)->get();

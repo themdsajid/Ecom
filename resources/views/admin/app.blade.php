@@ -187,7 +187,7 @@ License: For each use you must have a valid license purchased only from above li
                     <li class="nav-item">
                         <ul class="nav sub-menu">
                             <li class="nav-item">
-                                <a href="#" class="link-title">View All Users</a>
+                                <a href="{{route('all-user')}}" class="link-title">View All Users</a>
                             </li>
                         </ul>
                     </li>

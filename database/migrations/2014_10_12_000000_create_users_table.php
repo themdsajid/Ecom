@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('password');
             $table->string('permission')->nullable();
             $table->string('profile_image')->nullable();
-            $table->string('role')->nullable(); //User=>1,Vendor=>2,Admin=>3
-            $table->string('status')->nullable();
+            $table->string('role')->default('1'); //User=>1,Vendor=>2,Admin=>3
+            $table->string('status')->default('Active');
+            $table->integer('failed_login_count')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

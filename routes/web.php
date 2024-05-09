@@ -4,9 +4,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\MenuTagController;
+use App\Http\Controllers\MyUserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\UserLoginController;
 use App\Models\MenuTag;
 use Illuminate\Support\Facades\Route;
 
@@ -21,22 +23,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
+
+// require __DIR__.'/auth.php';
+
+Route::get('login', [UserLoginController::class, 'loginForm'])->name('myUser-login');
+Route::get('registration', [UserLoginController::class, 'registrationForm'])->name('myUser-registration');
+Route::post('registration-store', [UserLoginController::class, 'registration'])->name('myUser-registration-store');
+Route::post('login', [UserLoginController::class, 'store'])->name('login');
+
+Route::middleware(['auth', 'user.role:1'])->group(function () {
+    Route::post('logout', [UserLoginController::class, 'destroy'])->name('logout');
+    Route::get('index', [FrontendController::class, 'index'])->name('index');
+    Route::get('desert', [FrontendController::class, 'desert'])->name('Desert');
+    Route::get('commcool', [FrontendController::class, 'commcool'])->name('Commercial-Coolers');
+    Route::get('blog', [FrontendController::class, 'blog'])->name('Our-Blog');
+    Route::get('video-gallery', [FrontendController::class, 'videoGallery'])->name('Video-Gallery');
+    Route::get('contact-us', [FrontendController::class, 'contactUs'])->name('Contact-Us');
+    Route::get('b2b/registration', [FrontendController::class, 'b2b_registration'])->name('B2B-Registration');
+    Route::get('test', [FrontendController::class, 'test'])->name('Test');
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__.'/auth.php';
-
 
 Route::get('index', [FrontendController::class, 'index'])->name('index');
 Route::get('desert', [FrontendController::class, 'desert'])->name('Desert');
@@ -51,7 +69,7 @@ Route::get('test', [FrontendController::class, 'test'])->name('Test');
 
 Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 Route::get('logo', [AdminController::class, 'logo'])->name('logo');
-Route::patch('logoUpdate/{id}', [AdminController::class,'logoUpdate'])->name('logoUpdate');
+Route::patch('logoUpdate/{id}', [AdminController::class, 'logoUpdate'])->name('logoUpdate');
 
 Route::get('slider', [SliderController::class, 'index'])->name('slider');
 Route::get('slider-create', [SliderController::class, 'create'])->name('slider-create');
@@ -70,7 +88,7 @@ Route::delete('delete-menu/{id}', [MenuTagController::class, 'destroy'])->name('
 Route::get('add-category', [CategoryController::class, 'create'])->name('add-category');
 Route::post('category-store', [CategoryController::class, 'store'])->name('category-store');
 Route::get('all-categories', [CategoryController::class, 'index'])->name('all-categories');
-Route::get('edit-category/{id}', [CategoryController::class, 'edit'])->name('edit-category');//Using Same form editing used by create method
+Route::get('edit-category/{id}', [CategoryController::class, 'edit'])->name('edit-category'); //Using Same form editing used by create method
 Route::patch('category-update/{id}', [CategoryController::class, 'update'])->name('category-update');
 Route::delete('destroy-category/{id}', [CategoryController::class, 'destroy'])->name('destroy-category');
 
@@ -83,3 +101,6 @@ Route::patch('update-product/{id}', [ProductController::class, 'update'])->name(
 Route::delete('delete-product/{id}', [ProductController::class, 'destroy'])->name('destroy-product');
 Route::get('/export-products', [ProductController::class, 'exportProducts'])->name('export.products');
 
+Route::get('all-user', [MyUserController::class, 'index'])->name('all-user');
+Route::get('user-create', [MyUserController::class, 'create'])->name('user-create');
+Route::post('user-store', [MyUserController::class, 'store'])->name('user-store');
